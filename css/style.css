@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Jost:wght@400;500;600;700&family=Oswald:wght@400;600&family=Raleway:wght@500;600&display=swap');
 
+:root {
+  --dark-color: #262D33;
+  --light-color: #D4E7E7;
+  --dark-shadow: #1e2429;
+  --light-shadow: #22282d;
+  --lighter-shadow: #2a3239;
+}
+
 /* GENERAL */
 html {
   box-sizing: border-box;
@@ -22,7 +30,7 @@ body {
   overflow-x: hidden;
   font-family: 'Oswald', 'Arial', sans-serif;
   color: #A6E3E9;
-  background-color: #262D33;
+  background-color: var(--dark-color);
   transition: background-color 0.3s ease,
   color 0.3s ease, border 0.3s ease, box-shadow 0.3s ease;
 }
@@ -46,20 +54,20 @@ img {
 }
 
 .page__body--light {
-  color: #262D33;
-  background-color: #ffffff;
+  color: var(--dark-color);
+  background-color: var(--light-color);
 }
 
 .site-header {
   padding-top: 12px;
   padding-bottom: 12px;
-  background-color: #262D33;
+  background-color: var(--dark-color);
   box-shadow: 0px 6px 4px 0px rgba(0,0,0,0.1);
 }
 
 .page__body--light
 .site-header {
-  background-color: #ffffff;
+  background-color: var(--light-color);
 }
 
 .site-header__container {
@@ -90,8 +98,9 @@ img {
 }
 
 .site-header__logo-img {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
   border-radius: 50%;
 }
 
@@ -164,28 +173,31 @@ img {
 
 .mode-container {
   display: flex;
-  justify-content: center;
   padding-top: 20px;
 }
 
 .mode-container__btn {
-  color: #ffffff;
+  margin: 0 auto;
   padding: 0.7em 1.7em;
+  color: #ffffff;
   font-size: 18px;
-  border-radius: 0.5em;
-  background-color: #262D33;
-  border: 1px solid #1e2429;
   transition: all .3s;
-  box-shadow: 6px 6px 12px #262D33,-6px -6px 12px #1e2429;
+  background-color: var(--dark-color);
+  border: 1px solid var(--dark-shadow);
+  border-radius: 0.5em;
+  -webkit-box-shadow: 6px 6px 12px var(--dark-color),-6px -6px 12px var(--dark-shadow);
+  box-shadow: 6px 6px 12px var(--dark-color),-6px -6px 12px var(--dark-shadow);
+  cursor: pointer;
 }
 
 .mode-container__btn:hover {
   border: 1px solid white;
+  box-shadow: 0 0 12px var(--dark-color),-0 -0 12px var(--dark-shadow);
 }
- 
-.page__body--light
+
 .mode-container__btn:active {
-  box-shadow: 4px 4px 12px #c5c5c5,-4px -4px 12px #ffffff;
+  border: 1px solid white;
+  box-shadow: 0 0 0 var(--dark-color),-0 -0 0 var(--dark-shadow);
 }
 
 .page__body--light
@@ -194,10 +206,31 @@ img {
   padding: 0.7em 1.7em;
   font-size: 18px;
   border-radius: 0.5em;
-  background-color: #ffffff;
+  background-color: var(--light-color);
   border: 1px solid #e8e8e8;
   transition: all .3s;
-  box-shadow: 6px 6px 12px #c5c5c5,-6px -6px 12px #ffffff;
+  box-shadow: 6px 6px 12px var(--dark-color),-6px -6px 12px var(--dark-shadow);
+}
+
+.mode-container__color-selector-wrapper {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  z-index: 1;
+  background-image: radial-gradient(circle at 50% 50%, #1e1833, #1d1f4e, #20356c, #336581, #1c8eb0, #16d7d3, #19f4b9, #2eff93);
+  border-radius: 50%;
+}
+
+.mode-container__color-selector-wrapper img {
+  display: none;
+}
+
+.mode-container__color-selector {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  opacity: 0;
 }
 
 .site-hero {
@@ -232,9 +265,24 @@ img {
   padding: 10px;
   color: #fff;
   text-decoration: none;
-  background-color: #262D33;
+  background-color: var(--dark-color);
   border-radius: 5px;
-  box-shadow: 0px 6px 4px 0px rgba(59, 59, 59, 0.1);
+  box-shadow: 6px 6px 12px var(--dark-color),-6px -6px 12px var(--dark-shadow);
+  transition: box-shadow 0.3s ease;
+}
+
+.site-hero__link:hover {
+  box-shadow: 0 0 12px var(--dark-color),-0 -0 12px var(--dark-shadow);
+}
+
+.site-hero__link:active {
+  box-shadow: 0 0 0 var(--dark-color),-0 -0 0 var(--dark-shadow);
+}
+
+.page__body--light
+.site-hero__link {
+  border: 1px solid #b5dddd;
+  box-shadow: 6px 6px 12px #bfe0e0,-6px -6px 12px #cae6e6;
 }
 
 .site-hero__link:hover {
@@ -244,7 +292,8 @@ img {
 .page__body--light
 .site-hero__link {
   color: #262D33;
-  background-color: #ffffff;
+  background-color: var(--light-color);
+  box-shadow: none;
 }
 
 .site-hero__link-social {
